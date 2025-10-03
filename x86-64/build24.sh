@@ -63,7 +63,7 @@ PACKAGES="$PACKAGES luci-i18n-samba4-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
 # 静态文件服务器dufs(推荐)
 PACKAGES="$PACKAGES luci-i18n-dufs-zh-cn"
-#add-xxx 自定义增加的app
+# add-xxx 自定义增加的app
 PACKAGES="$PACKAGES luci-app-wireguard"
 PACKAGES="$PACKAGES luci-app-wol"
 PACKAGES="$PACKAGES luci-app-syncdial"
@@ -80,9 +80,7 @@ PACKAGES="$PACKAGES luci-app-autoreboot"
 PACKAGES="$PACKAGES luci-app-mwan3"
 PACKAGES="$PACKAGES luci-app-rustdesk-server"
 PACKAGES="$PACKAGES wireguard-tools"
-
-
-#add-xxx
+# add-xxx
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
