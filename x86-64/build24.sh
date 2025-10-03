@@ -64,7 +64,6 @@ PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
 # 静态文件服务器dufs(推荐)
 PACKAGES="$PACKAGES luci-i18n-dufs-zh-cn"
 # add-xxx 自定义增加的app
-PACKAGES="$PACKAGES luci-proto-wireguard"
 PACKAGES="$PACKAGES luci-app-wol"
 PACKAGES="$PACKAGES luci-app-syncdial"
 PACKAGES="$PACKAGES luci-app-uhttpd"
@@ -76,10 +75,22 @@ PACKAGES="$PACKAGES luci-app-upnp"
 PACKAGES="$PACKAGES xupnpd"
 PACKAGES="$PACKAGES luci-app-socat"
 PACKAGES="$PACKAGES luci-app-arpbind"
-PACKAGES="$PACKAGES luci-app-autoreboot"
+PACKAGES="$PACKAGES luci-app-advanced-reboot"
 PACKAGES="$PACKAGES luci-app-mwan3"
 PACKAGES="$PACKAGES luci-app-rustdesk-server"
 PACKAGES="$PACKAGES wireguard-tools"
+PACKAGES="$PACKAGES luci-proto-wireguard"
+PACKAGES="$PACKAGES luci-i18n-wol-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-uhttpd-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-udpxy-zh-cn"
+PACKAGES="$PACKAGES luci-app-softether"
+PACKAGES="$PACKAGES luci-i18n-ddns-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-vlmcsd-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-upnp-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-arpbind-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-advanced-reboot-zh-cn“
+PACKAGES="$PACKAGES luci-i18n-mwan3-zh-cn“
+PACKAGES="$PACKAGES luci-i18n-rustdesk-server-zh-cn“
 # add-xxx
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
