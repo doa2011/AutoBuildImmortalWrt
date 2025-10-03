@@ -58,11 +58,11 @@ PACKAGES="$PACKAGES luci-i18n-ttyd-zh-cn"
 PACKAGES="$PACKAGES luci-app-openclash"
 # PACKAGES="$PACKAGES luci-i18n-homeproxy-zh-cn"
 PACKAGES="$PACKAGES openssh-sftp-server"
-PACKAGES="$PACKAGES luci-i18n-samba4-zh-cn"
+# PACKAGES="$PACKAGES luci-i18n-samba4-zh-cn"
 # 文件管理器
 PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
 # 静态文件服务器dufs(推荐)
-PACKAGES="$PACKAGES luci-i18n-dufs-zh-cn"
+# PACKAGES="$PACKAGES luci-i18n-dufs-zh-cn"
 # add-xxx 自定义增加的app
 PACKAGES="$PACKAGES luci-app-wol"
 PACKAGES="$PACKAGES luci-app-syncdial"
@@ -73,6 +73,7 @@ PACKAGES="$PACKAGES luci-app-ddns"
 PACKAGES="$PACKAGES luci-app-vlmcsd"
 PACKAGES="$PACKAGES luci-app-upnp"
 PACKAGES="$PACKAGES xupnpd"
+PACKAGES="$PACKAGES socat"
 PACKAGES="$PACKAGES luci-app-socat"
 PACKAGES="$PACKAGES luci-app-arpbind"
 PACKAGES="$PACKAGES luci-app-advanced-reboot"
@@ -96,7 +97,6 @@ PACKAGES="$PACKAGES luci-i18n-rustdesk-server-zh-cn"
 #delete app start
 PACKAGES="$PACKAGES -luci-app-3cat -luci-i18n-3cat-zh-cn"
 PACKAGES="$PACKAGES -luci-app-autoreboot -luci-i18n-autoreboot-zh-cn"
-PACKAGES="$PACKAGES -dufs -luci-app-dufs -luci-i18n-dufs-zh-cn"
 
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
