@@ -88,9 +88,9 @@ PACKAGES="$PACKAGES luci-i18n-ddns-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-vlmcsd-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-upnp-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-arpbind-zh-cn"
-PACKAGES="$PACKAGES luci-i18n-advanced-reboot-zh-cn“
-PACKAGES="$PACKAGES luci-i18n-mwan3-zh-cn“
-PACKAGES="$PACKAGES luci-i18n-rustdesk-server-zh-cn“
+PACKAGES="$PACKAGES luci-i18n-advanced-reboot-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-mwan3-zh-cn"
+PACKAGES="$PACKAGES luci-i18n-rustdesk-server-zh-cn"
 # add-xxx
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
