@@ -63,6 +63,13 @@ PACKAGES="$PACKAGES luci-i18n-samba4-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
 # 静态文件服务器dufs(推荐)
 PACKAGES="$PACKAGES luci-i18n-dufs-zh-cn"
+#add-xxx
+PACKAGES="$PACKAGES softethervpn-server"
+PACKAGES="$PACKAGES vlmcsd"
+PACKAGES="$PACKAGES udpxy"
+PACKAGES="$PACKAGES xupnpd"
+PACKAGES="$PACKAGES socat"
+#add-xxx
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
