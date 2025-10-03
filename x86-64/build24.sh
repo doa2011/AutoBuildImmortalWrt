@@ -92,6 +92,12 @@ PACKAGES="$PACKAGES luci-i18n-advanced-reboot-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-mwan3-zh-cn"
 PACKAGES="$PACKAGES luci-i18n-rustdesk-server-zh-cn"
 # add-xxx
+
+#delete app start
+PACKAGES="$PACKAGES -luci-app-3cat -luci-i18n-3cat-zh-cn"
+PACKAGES="$PACKAGES -luci-app-autoreboot -luci-i18n-autoreboot-zh-cn"
+PACKAGES="$PACKAGES -dufs -luci-app-dufs -luci-i18n-dufs-zh-cn"
+
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
