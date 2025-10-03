@@ -64,11 +64,16 @@ PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
 # 静态文件服务器dufs(推荐)
 PACKAGES="$PACKAGES luci-i18n-dufs-zh-cn"
 #add-xxx
-PACKAGES="$PACKAGES softethervpn-server"
-PACKAGES="$PACKAGES vlmcsd"
-PACKAGES="$PACKAGES udpxy"
-PACKAGES="$PACKAGES xupnpd"
-PACKAGES="$PACKAGES socat"
+PACKAGES="$PACKAGES luci-app-wireguard-zh-cn“
+PACKAGES="$PACKAGES luci-app-wol-zh-cn“
+PACKAGES="$PACKAGES luci-app-syncdial“
+PACKAGES="$PACKAGES luci-app-uhttpd-zh-cn“
+PACKAGES="$PACKAGES luci-app-udpxy-zh-cn“
+PACKAGES="$PACKAGES lucia-app-softethervpn-zh-cn“
+PACKAGES="$PACKAGES luci-app-ddns-zh-cn“
+PACKAGES="$PACKAGES luci-app-vlmcsd-zh-cn“
+PACKAGES="$PACKAGES xupnpd“
+PACKAGES="$PACKAGES socat“
 #add-xxx
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
