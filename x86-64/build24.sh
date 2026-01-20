@@ -80,7 +80,7 @@ PACKAGES="$PACKAGES luci-app-mwan3 luci-i18n-mwan3-zh-cn"
 PACKAGES="$PACKAGES luci-app-rustdesk-server luci-i18n-rustdesk-server-zh-cn"
 PACKAGES="$PACKAGES wireguard-tools"
 PACKAGES="$PACKAGES luci-proto-wireguard"
-PACKAGES="$PACKAGES luci-app-vnstat2 luci-i18n-vsftpd-zh-cn"
+#PACKAGES="$PACKAGES luci-app-vnstat2 luci-i18n-vsftpd-zh-cn"
 #PACKAGES="$PACKAGES luci-app-nlbwmon luci-i18n-nlbwmon-zh-cn"
 PACKAGES="$PACKAGES luci-app-banip luci-i18n-banip-zh-cn"
 # add-xxx
