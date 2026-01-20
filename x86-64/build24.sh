@@ -83,6 +83,7 @@ PACKAGES="$PACKAGES luci-proto-wireguard"
 #PACKAGES="$PACKAGES luci-app-vnstat2 luci-i18n-vsftpd-zh-cn"
 #PACKAGES="$PACKAGES luci-app-nlbwmon luci-i18n-nlbwmon-zh-cn"
 PACKAGES="$PACKAGES luci-app-banip luci-i18n-banip-zh-cn"
+PACKAGES="$PACKAGES luci-app-zerotier luci-i18n-zerotier-zh-cn"
 # add-xxx
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
