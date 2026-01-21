@@ -84,6 +84,7 @@ PACKAGES="$PACKAGES luci-proto-wireguard"
 #PACKAGES="$PACKAGES luci-app-nlbwmon luci-i18n-nlbwmon-zh-cn"
 PACKAGES="$PACKAGES luci-app-banip luci-i18n-banip-zh-cn"
 PACKAGES="$PACKAGES luci-app-zerotier luci-i18n-zerotier-zh-cn"
+PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-cdc-ether"
 # add-xxx
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
