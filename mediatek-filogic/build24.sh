@@ -45,7 +45,7 @@ cat /home/build/immortalwrt/files/etc/config/pppoe-settings
 # 输出调试信息
 echo "$(date '+%Y-%m-%d %H:%M:%S') - Starting build process..."
 
-
+sh shell/thirdapp.sh
 # 定义所需安装的包列表 下列插件你都可以自行删减
 PACKAGES=""
 PACKAGES="$PACKAGES curl luci luci-i18n-base-zh-cn"
@@ -67,7 +67,7 @@ PACKAGES="$PACKAGES luci-proto-wireguard"
 PACKAGES="$PACKAGES luci-app-zerotier luci-i18n-zerotier-zh-cn"
 PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-cdc-ether"
 # add-xxx
-sh shell/thirdapp.sh
+
 # 第三方软件包 合并
 # ======== shell/custom-packages.sh =======
 if [ "$PROFILE" = "glinet_gl-axt1800" ] || [ "$PROFILE" = "glinet_gl-ax1800" ]; then
