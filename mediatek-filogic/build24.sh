@@ -1,6 +1,7 @@
 #!/bin/bash
 source shell/custom-packages.sh
 source shell/switch_repository.sh
+source shell/thirdapp.sh
 # 该文件实际为imagebuilder容器内的build.sh
 
 #echo "✅ 你选择了第三方软件包：$CUSTOM_PACKAGES"
@@ -66,7 +67,7 @@ PACKAGES="$PACKAGES luci-proto-wireguard"
 PACKAGES="$PACKAGES luci-app-zerotier luci-i18n-zerotier-zh-cn"
 PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-cdc-ether"
 # add-xxx
-
+sh shell/thirdapp.sh
 # 第三方软件包 合并
 # ======== shell/custom-packages.sh =======
 if [ "$PROFILE" = "glinet_gl-axt1800" ] || [ "$PROFILE" = "glinet_gl-ax1800" ]; then
