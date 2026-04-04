@@ -1,38 +1,39 @@
 #!/bin/bash
 source shell/custom-packages.sh
 source shell/switch_repository.sh
-source shell/thirdapp.sh
-# 该文件实际为imagebuilder容器内的build.sh
 
-#echo "✅ 你选择了第三方软件包：$CUSTOM_PACKAGES"
-# 下载 run 文件仓库
+# 下载第三方软件仓库（run 文件）
 echo "🔄 正在同步第三方软件仓库 Cloning run file repo..."
 git clone --depth=1 https://github.com/wukongdaily/store.git /tmp/store-run-repo
 
-# 拷贝 run/arm64 下所有 run 文件和ipk文件 到 extra-packages 目录
 mkdir -p /home/build/immortalwrt/extra-packages
 cp -r /tmp/store-run-repo/run/arm64/* /home/build/immortalwrt/extra-packages/
 
 echo "✅ Run files copied to extra-packages:"
 ls -lh /home/build/immortalwrt/extra-packages/*.run
+
 # 解压并拷贝ipk到packages目录
 sh shell/prepare-packages.sh
 ls -lah /home/build/immortalwrt/packages/
+
 # 添加架构优先级信息
 sed -i '1i\
 arch aarch64_generic 10\n\
 arch aarch64_cortex-a53 15' repositories.conf
 
-
+# === 下载 OpenAppFilter ipk ===
+sh shell/thirdapp.sh
+# 加载 OAF 包路径
+[ -f /tmp/oaf_packages.sh ] && source /tmp/oaf_packages.sh
 
 # yml 传入的路由器型号 PROFILE
 echo "Building for profile: $PROFILE"
 
 echo "Include Docker: $INCLUDE_DOCKER"
 echo "Create pppoe-settings"
-mkdir -p  /home/build/immortalwrt/files/etc/config
+mkdir -p /home/build/immortalwrt/files/etc/config
 
-# 创建pppoe配置文件 yml传入pppoe变量————>pppoe-settings文件
+# 创建pppoe配置文件
 cat << EOF > /home/build/immortalwrt/files/etc/config/pppoe-settings
 enable_pppoe=${ENABLE_PPPOE}
 pppoe_account=${PPPOE_ACCOUNT}
@@ -45,7 +46,6 @@ cat /home/build/immortalwrt/files/etc/config/pppoe-settings
 # 输出调试信息
 echo "$(date '+%Y-%m-%d %H:%M:%S') - Starting build process..."
 
-sh shell/thirdapp.sh
 # 定义所需安装的包列表 下列插件你都可以自行删减
 PACKAGES=""
 PACKAGES="$PACKAGES curl luci luci-i18n-base-zh-cn"
@@ -66,17 +66,22 @@ PACKAGES="$PACKAGES wireguard-tools"
 PACKAGES="$PACKAGES luci-proto-wireguard"
 PACKAGES="$PACKAGES luci-app-zerotier luci-i18n-zerotier-zh-cn"
 PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-cdc-ether"
-# add-xxx
 
 # 第三方软件包 合并
-# ======== shell/custom-packages.sh =======
+# ======== shell/custom-packages.sh ========
 if [ "$PROFILE" = "glinet_gl-axt1800" ] || [ "$PROFILE" = "glinet_gl-ax1800" ]; then
-    # 这2款 暂时不支持第三方插件的集成 snapshot版本太高 opkg换成apk包管理器 6.12内核 
+    # 这2款 暂时不支持第三方插件的集成 snapshot版本太高 opkg换成apk包管理器 6.12内核
     echo "Model:$PROFILE not support third-parted packages"
     PACKAGES="$PACKAGES -luci-i18n-diskman-zh-cn luci-i18n-homeproxy-zh-cn"
 else
     echo "Other Model:$PROFILE"
     PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
+fi
+
+# === 追加 OpenAppFilter ipk 包（本地路径） ===
+if [ -n "$OAF_PACKAGES" ]; then
+    PACKAGES="$PACKAGES $OAF_PACKAGES"
+    echo "✅ 已追加 OpenAppFilter 包: $OAF_PACKAGES"
 fi
 
 # 判断是否需要编译 Docker 插件
@@ -99,7 +104,6 @@ if echo "$PACKAGES" | grep -q "luci-app-openclash"; then
 else
     echo "⚪️ 未选择 luci-app-openclash"
 fi
-
 
 # 构建镜像
 echo "$(date '+%Y-%m-%d %H:%M:%S') - Building image with the following packages:"

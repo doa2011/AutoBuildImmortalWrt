@@ -1,6 +1,6 @@
 #!/bin/bash
 # OpenAppFilter 自动下载脚本
-# 下载并安装到 imagebuilder rootfs
+# 下载 ipk 包到 /home/build/immortalwrt/packages/
 
 OAF_PKG_DIR="/home/build/immortalwrt/packages"
 TMP_JSON="/tmp/oaf_release.json"
@@ -46,16 +46,13 @@ cp "/tmp/${KERNEL_DIR}"/*.ipk "$OAF_PKG_DIR/"
 mv "$OAF_PKG_DIR"/appfilter_*.ipk "$OAF_PKG_DIR/appfilter_aarch64.ipk"
 mv "$OAF_PKG_DIR"/kmod-oaf_*.ipk "$OAF_PKG_DIR/kmod-oaf_aarch64.ipk"
 
-# ⑤ 安装到 imagebuilder rootfs（make image 之前执行）
-echo "开始安装到 rootfs..."
-cd /home/build/immortalwrt
-opkg install --force-depends \
-#    $OAF_PKG_DIR/kmod-oaf_aarch64.ipk \
-    $OAF_PKG_DIR/appfilter_aarch64.ipk \
-    $OAF_PKG_DIR/luci-app-oaf_all.ipk \
-    $OAF_PKG_DIR/luci-i18n-oaf-zh-cn_all.ipk
+# ⑤ 输出包名列表，供 build24.sh 追加到 PACKAGES
+echo "OAF_PACKAGES=\"$OAF_PKG_DIR/appfilter_aarch64.ipk $OAF_PKG_DIR/luci-app-oaf_all.ipk $OAF_PKG_DIR/luci-i18n-oaf-zh-cn_all.ipk\"" > /tmp/oaf_packages.sh
 
-echo "✅ OpenAppFilter 安装完成"
+echo ""
+echo "========================================"
+echo "✅ 下载完成"
+ls -lh "$OAF_PKG_DIR/"
 echo "========================================"
 
 rm -rf "$TMP_JSON" /tmp/oaf_kernel.tar.gz "/tmp/${KERNEL_DIR}"
