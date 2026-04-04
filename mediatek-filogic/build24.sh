@@ -76,6 +76,8 @@ if [ "$PROFILE" = "glinet_gl-axt1800" ] || [ "$PROFILE" = "glinet_gl-ax1800" ]; 
 else
     echo "Other Model:$PROFILE"
     PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
+    # 移除旧版 appfilter 避免与 OpenAppFilter 的 luci-app-oaf 冲突
+    PACKAGES=$(echo "$PACKAGES" | sed -e 's/luci-app-appfilter//g' -e 's/luci-i18n-appfilter-zh-cn//g' -e 's/  / /g' -e 's/^ //')
 fi
 
 # === 追加 OpenAppFilter ipk 包（本地路径） ===
