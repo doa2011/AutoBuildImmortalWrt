@@ -59,7 +59,13 @@ PACKAGES="$PACKAGES luci-i18n-ttyd-zh-cn"
 PACKAGES="$PACKAGES openssh-sftp-server"
 # 文件管理器
 PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
-
+#XXX ADD
+PACKAGES="$PACKAGES xupnpd"
+PACKAGES="$PACKAGES wireguard-tools"
+PACKAGES="$PACKAGES luci-proto-wireguard"
+PACKAGES="$PACKAGES luci-app-zerotier luci-i18n-zerotier-zh-cn"
+PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-cdc-ether"
+# add-xxx
 
 # 第三方软件包 合并
 # ======== shell/custom-packages.sh =======
