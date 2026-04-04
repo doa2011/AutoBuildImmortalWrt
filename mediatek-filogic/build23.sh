@@ -27,6 +27,10 @@ if [ -n "$CUSTOM_PACKAGES" ]; then
     sed -i '1i\
     arch aarch64_generic 10\n\
     arch aarch64_cortex-a53 15' repositories.conf
+
+    # === 下载 OpenAppFilter ipk ===
+    sh shell/thirdapp.sh
+    [ -f /tmp/oaf_packages.sh ] && source /tmp/oaf_packages.sh
   fi
 else
   echo "⚪️ 未选择任何第三方软件包"
@@ -73,6 +77,12 @@ PACKAGES="$PACKAGES script-utils"
 # 第三方软件包 合并
 # ======== shell/custom-packages.sh =======
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
+
+# === 追加 OpenAppFilter ipk 包（本地路径） ===
+if [ -n "$OAF_PACKAGES" ]; then
+    PACKAGES="$PACKAGES $OAF_PACKAGES"
+    echo "✅ 已追加 OpenAppFilter 包: $OAF_PACKAGES"
+fi
 
 # 判断是否需要编译 Docker 插件
 if [ "$INCLUDE_DOCKER" = "yes" ]; then
