@@ -38,6 +38,10 @@ else
   # 解压并拷贝ipk到packages目录
   sh shell/prepare-packages.sh
   ls -lah /home/build/immortalwrt/packages/
+
+  # === 下载 OpenAppFilter ipk ===
+  sh shell/thirdapp.sh
+  [ -f /tmp/oaf_packages.sh ] && source /tmp/oaf_packages.sh
 fi
 
 # 输出调试信息
@@ -91,6 +95,12 @@ PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-cdc-ether"
 # 合并imm仓库以外的第三方插件
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
 
+# === 追加 OpenAppFilter luci/语言包（第三方，不含主程序） ===
+# build23.sh: 只取 luci 和语言包，不含 appfilte 主程序
+if [ -n "$OAF_PACKAGES" ]; then
+    PACKAGES="$PACKAGES /home/build/immortalwrt/packages/luci-app-oaf_all.ipk /home/build/immortalwrt/packages/luci-i18n-oaf-zh-cn_all.ipk"
+    echo "✅ 已追加 OpenAppFilter luci+语言包"
+fi
 
 # 判断是否需要编译 Docker 插件
 if [ "$INCLUDE_DOCKER" = "yes" ]; then
