@@ -78,9 +78,7 @@ PACKAGES="$PACKAGES script-utils"
 # ======== shell/custom-packages.sh =======
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
 
-# === 追加 OpenAppFilter kmod（官方源）+ 主程序/luci（第三方） ===
-PACKAGES="$PACKAGES kmod-appfilter"
-echo "✅ 已添加官方源 kmod-appfilter"
+# === 追加 OpenAppFilter 主程序/luci（第三方，kmod 由用户添加到 PACKAGES） ===
 if [ -n "$OAF_PACKAGES" ]; then
     PACKAGES="$PACKAGES $OAF_PACKAGES"
     echo "✅ 已追加 OpenAppFilter 主程序/luci: $OAF_PACKAGES"
