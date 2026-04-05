@@ -85,10 +85,11 @@ PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-cdc-ether"
 # ======== shell/custom-packages.sh =======
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
 
-# === 追加 OpenAppFilter 主程序/luci（第三方，kmod 由用户添加到 PACKAGES） ===
+# === 追加 OpenAppFilter luci/语言包（第三方，23.05.4不含主程序） ===
+# build23.sh: 只取 luci 和语言包，不含 appfilter_aarch64 主程序
 if [ -n "$OAF_PACKAGES" ]; then
-    PACKAGES="$PACKAGES $OAF_PACKAGES"
-    echo "✅ 已追加 OpenAppFilter 主程序/luci: $OAF_PACKAGES"
+    PACKAGES="$PACKAGES /home/build/immortalwrt/packages/luci-app-oaf_all.ipk /home/build/immortalwrt/packages/luci-i18n-oaf-zh-cn_all.ipk"
+    echo "✅ 已追加 OpenAppFilter luci+语言包"
 fi
 
 # 判断是否需要编译 Docker 插件
