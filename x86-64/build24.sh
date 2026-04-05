@@ -62,6 +62,31 @@ PACKAGES="$PACKAGES openssh-sftp-server"
 
 # 文件管理器
 PACKAGES="$PACKAGES luci-i18n-filemanager-zh-cn"
+
+# add-xxx 自定义增加的app
+PACKAGES="$PACKAGES luci-app-wol luci-i18n-wol-zh-cn"
+PACKAGES="$PACKAGES luci-app-syncdial"
+PACKAGES="$PACKAGES luci-app-uhttpd luci-i18n-uhttpd-zh-cn"
+PACKAGES="$PACKAGES luci-app-udpxy luci-i18n-udpxy-zh-cn"
+PACKAGES="$PACKAGES	softethervpn-server softethervpn-base"
+PACKAGES="$PACKAGES luci-app-ddns luci-i18n-ddns-zh-cn"
+PACKAGES="$PACKAGES luci-app-vlmcsd luci-i18n-vlmcsd-zh-cn"
+PACKAGES="$PACKAGES luci-app-upnp luci-i18n-upnp-zh-cn"
+PACKAGES="$PACKAGES xupnpd"
+#PACKAGES="$PACKAGES socat"
+# PACKAGES="$PACKAGES luci-app-socat"
+PACKAGES="$PACKAGES luci-app-arpbind luci-i18n-arpbind-zh-cn"
+PACKAGES="$PACKAGES luci-app-mwan3 luci-i18n-mwan3-zh-cn"
+PACKAGES="$PACKAGES luci-app-rustdesk-server luci-i18n-rustdesk-server-zh-cn"
+PACKAGES="$PACKAGES wireguard-tools"
+PACKAGES="$PACKAGES luci-proto-wireguard"
+#PACKAGES="$PACKAGES luci-app-vnstat2 luci-i18n-vsftpd-zh-cn"
+#PACKAGES="$PACKAGES luci-app-nlbwmon luci-i18n-nlbwmon-zh-cn"
+PACKAGES="$PACKAGES luci-app-banip luci-i18n-banip-zh-cn"
+PACKAGES="$PACKAGES luci-app-zerotier luci-i18n-zerotier-zh-cn"
+PACKAGES="$PACKAGES kmod-usb-net-rndis kmod-usb-net-cdc-ether"
+# add-xxx
+
 # ======== shell/custom-packages.sh =======
 # 合并imm仓库以外的第三方插件
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
