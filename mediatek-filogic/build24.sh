@@ -81,10 +81,10 @@ else
 fi
 
 # === 追加 OpenAppFilter ipk 包（本地路径） ===
-if [ -n "$OAF_PACKAGES" ]; then
-    PACKAGES="$PACKAGES $OAF_PACKAGES"
-    echo "✅ 已追加 OpenAppFilter 包: $OAF_PACKAGES"
-fi
+#if [ -n "$OAF_PACKAGES" ]; then
+#    PACKAGES="$PACKAGES $OAF_PACKAGES"
+#    echo "✅ 已追加 OpenAppFilter 包: $OAF_PACKAGES"
+#fi
 
 # 判断是否需要编译 Docker 插件
 if [ "$INCLUDE_DOCKER" = "yes" ]; then
