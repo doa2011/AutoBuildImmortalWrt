@@ -78,10 +78,12 @@ PACKAGES="$PACKAGES script-utils"
 # ======== shell/custom-packages.sh =======
 PACKAGES="$PACKAGES $CUSTOM_PACKAGES"
 
-# === 追加 OpenAppFilter ipk 包（本地路径） ===
+# === 追加 OpenAppFilter kmod（官方源）+ 主程序/luci（第三方） ===
+PACKAGES="$PACKAGES kmod-appfilter"
+echo "✅ 已添加官方源 kmod-appfilter"
 if [ -n "$OAF_PACKAGES" ]; then
     PACKAGES="$PACKAGES $OAF_PACKAGES"
-    echo "✅ 已追加 OpenAppFilter 包: $OAF_PACKAGES"
+    echo "✅ 已追加 OpenAppFilter 主程序/luci: $OAF_PACKAGES"
 fi
 
 # 判断是否需要编译 Docker 插件
