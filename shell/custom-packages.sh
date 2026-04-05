@@ -44,7 +44,7 @@ CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-advancedplus luci-i18n-advancedplus-z
 # Turbo ACC 网络加速
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-turboacc"
 # 应用过滤 openappfilter.com (已由 OpenAppFilter (OAF) 替代，避免文件冲突,only app)
-#CUSTOM_PACKAGES="$CUSTOM_PACKAGES appfilter"
+CUSTOM_PACKAGES="$CUSTOM_PACKAGES appfilter"
 # 设置向导 by sirpdboy
 #CUSTOM_PACKAGES="$CUSTOM_PACKAGES luci-app-netwizard luci-i18n-netwizard-zh-cn"
 # Lucky大吉 
