@@ -34,37 +34,8 @@ LANG_URL=$(grep -o '"browser_download_url": *"[^"]*luci-i18n-oaf[^"]*\.ipk[^"]*"
 echo "下载: $(basename $LANG_URL)"
 wget -q "$LANG_URL" -O "$OAF_PKG_DIR/luci-i18n-oaf-zh-cn_all.ipk"
 
-# ④ 主程序 + 内核模块（优先 mediatek_filogic，没有则 fallback mt7622）
-# 注意：cmcc_rax3000m-emmc-ubootmod 是 filogic 平台，优先找 filogic
-KERNEL_URL=$(grep -o '"browser_download_url": *"[^"]*openwrt24.10.5[^"]*mediatek_filogic[^"]*"' \
-             "$TMP_JSON" | sed 's/"browser_download_url": *"\([^"]*\)"/\1/' | head -1)
-if [ -z "$KERNEL_URL" ]; then
-    KERNEL_URL=$(grep -o '"browser_download_url": *"[^"]*openwrt24.10.5[^"]*mediatek_mt7622[^"]*"' \
-                 "$TMP_JSON" | sed 's/"browser_download_url": *"\([^"]*\)"/\1/' | head -1)
-fi
-
-if [ -n "$KERNEL_URL" ]; then
-    echo "下载: $(basename $KERNEL_URL)"
-    wget -q "$KERNEL_URL" -O /tmp/oaf_kernel.tar.gz
-
-    # 解压 tar.gz，提取 ipk
-    KERNEL_DIR=$(tar -tzf /tmp/oaf_kernel.tar.gz | head -1 | sed 's/\/$//')
-    tar -xzf /tmp/oaf_kernel.tar.gz -C /tmp/
-    cp "/tmp/${KERNEL_DIR}/"*.ipk "$OAF_PKG_DIR/"
-
-    # 重命名主程序，kmod 由用户自行添加（跳过 kmod）
-    if [ -f "$OAF_PKG_DIR/appfilter_0"*.ipk ] 2>/dev/null; then
-        mv "$OAF_PKG_DIR"/appfilter_*.ipk "$OAF_PKG_DIR/appfilter_aarch64.ipk"
-        echo "  ✅ 提取主程序: appfilter_aarch64.ipk"
-    fi
-    if [ -f "$OAF_PKG_DIR/kmod-oaf_0"*.ipk ] 2>/dev/null; then
-        echo "  ⏭️ 跳过 kmod（由用户添加到 PACKAGES）"
-        rm -f "$OAF_PKG_DIR"/kmod-oaf_*.ipk
-    fi
-    rm -rf /tmp/oaf_kernel.tar.gz "/tmp/${KERNEL_DIR}"
-else
-    echo "⚠️ 未找到主程序包下载链接，跳过"
-fi
+# ④ 主程序由用户自行安装，此处不再从 tar.gz 提取
+# 用户可自行从 releases 下载 appfilter_aarch64.ipk 安装
 
 # ⑤ 汇总
 echo ""
@@ -73,14 +44,13 @@ echo "✅ 下载完成"
 ls -lh "$OAF_PKG_DIR/"
 echo "========================================"
 
-# 输出包路径（不含 kmod）
+# 输出包路径（不含主程序和 kmod）
 OAF_PKGS=""
 for f in "$OAF_PKG_DIR"/luci-app-oaf_all.ipk \
-         "$OAF_PKG_DIR"/luci-i18n-oaf-zh-cn_all.ipk \
-         "$OAF_PKG_DIR"/appfilter_aarch64.ipk; do
+         "$OAF_PKG_DIR"/luci-i18n-oaf-zh-cn_all.ipk; do
     [ -s "$f" ] && OAF_PKGS="${OAF_PKGS} $f"
 done
 echo "OAF_PACKAGES=\"$OAF_PKGS\"" > /tmp/oaf_packages.sh
-echo "✅ OAF 包（kmod 由用户添加）: $OAF_PKGS"
+echo "✅ OAF 包（不含主程序，主程序由用户自行安装）: $OAF_PKGS"
 
 rm -f "$TMP_JSON"
